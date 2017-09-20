@@ -1,0 +1,19 @@
+.intl-tel-input {
+  .flag-container{
+    padding-left: 0;
+  }
+  .selected-flag{
+    width: 54Px!important;
+    padding-left: 20Px;
+    border-top-left-radius: 4Px;
+    border-bottom-left-radius: 4Px;
+
+    outline: none !important;
+    .iti-arrow{
+      right: 2Px;
+    }
+  }
+  .form-control{
+    padding-left: 60Px!important;
+  }
+}

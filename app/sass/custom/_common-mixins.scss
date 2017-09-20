@@ -1,0 +1,289 @@
+
+img[height="1"],img[width="1"],iframe[name*="google_conversion_frame"]{
+    @extend .visually-hidden;
+}
+//a,.close,.btn,input{
+//  outline: none !important;
+//}
+//@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+//    body {
+//        -ms-overflow-style: scrollbar;
+//    }
+//}
+
+//.like-inline:after {
+//  content: '\A';
+//  white-space: pre;
+//}
+
+
+@mixin mq($arg){
+  
+  @if (length($arg) == 1){
+    @if ($arg == xs){
+        @media (max-width: $xs-max) {
+        @content;
+      }
+    }
+    @else if ($arg == sm){
+      @media (min-width: $sm) and (max-width: $sm-max) {
+        @content;
+      }
+    }
+    @else if ($arg == md){
+      @media (min-width: $md) and (max-width: $md-max) {
+        @content;
+      }
+    }
+    @else if ($arg == lg){
+      @media (min-width: $lg) and (max-width: $lg-max) {
+        @content;
+      }
+    }
+    @else if ($arg == xl){
+      @media (min-width: $xl){
+        @content;
+      }
+    }
+    @else {
+      @media all and (min-width: $arg) {
+        @content;
+      }
+    }
+  }
+  @else if (length($arg) == 2) {
+    @if (nth($arg,1) == max){
+      @media all and (max-width: nth($arg,2)) {
+        @content;
+      }
+    }
+    @else{
+      @media all and (min-width: nth($arg,1)) and (max-width: nth($arg,2)){
+        @content;
+      }
+    }
+  }
+}
+
+
+.visually-hidden {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    width: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+}
+
+@function strip-units($number) {
+  @if type-of($number) == 'number' and not unitless($number) {
+    @return $number / ($number * 0 + 1);
+  }
+
+  @return $number;
+}
+@function em($pxval, $base: 16) {
+  @if not unitless($pxval) {
+    $pxval: strip-units($pxval);
+  }
+  @if not unitless($base) {
+    $base: strip-units($base);
+  }
+  @return ($pxval / $base) * 1em;
+}
+@function rem($pxval, $base: 16) {
+  @if not unitless($pxval) {
+    $pxval: strip-units($pxval);
+  }
+  @if not unitless($base) {
+    $base: strip-units($base);
+  }
+  @return ($pxval / $base) * 1rem;
+}
+
+
+.link-tdu{
+  text-decoration: underline;
+  &:hover,&:active,&:focus{
+    text-decoration: none;
+  }
+}
+
+.link-tdn{
+  text-decoration: none;
+  &:hover,&:active,&:focus{
+    text-decoration: underline;
+  }
+}
+.link-n{
+  text-decoration: none !important;
+}
+
+
+
+@mixin ghost-center {
+  
+  text-align: center;
+  &:before {
+    content: '';
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+    margin-right: -0.25em; /* Adjusts for spacing */
+  }
+
+  >* {
+    display: inline-block;
+    vertical-align: middle;
+  }
+}
+
+
+@function bl($opacity){
+    @return rgba(0,0,0,$opacity);
+}
+
+@function wh($opacity){
+    @return rgba(255,255,255,$opacity);
+}
+
+@mixin setSize($height, $font-size,$borderHeight:0,$lineHeight:1.5) {
+  line-height: $lineHeight;
+  font-size: $font-size ;
+  $padding: ($height - $font-size * $lineHeight - $borderHeight * 2) / 2;
+  @if(unit($padding) == 'px'){
+    padding-top:floor($padding);
+    padding-bottom:floor($padding);
+  }
+  @else{
+    padding-top: $padding;
+    padding-bottom: $padding;
+  }
+  border-width: $borderHeight;
+}
+
+$version : 3;
+
+@function bgi($image) {
+  @return "../img/" + $image + "?v=" + $version
+}
+
+
+
+//Creates a visual triangle. Mixin takes ($size, $color, $direction)
+//
+//The $size argument can take one or two values—width height.
+//
+//The $color argument can take one or two values—foreground-color background-color.
+//
+//$direction: up, down, left, right, up-right, up-left, down-right, down-left
+//
+//@include triangle(12px, gray, down);
+//@include triangle(12px 6px, gray lavender, up-left);
+
+
+@mixin triangle($size, $color, $direction) {
+  $width: nth($size, 1);
+  $height: nth($size, length($size));
+  $foreground-color: nth($color, 1);
+  $background-color: if(length($color) == 2, nth($color, 2), transparent);
+  height: 0;
+  width: 0;
+
+  @if ($direction == up) or ($direction == down) or ($direction == right) or ($direction == left) {
+    $width: $width / 2;
+    $height: if(length($size) > 1, $height, $height/2);
+
+    @if $direction == up {
+      border-bottom: $height solid $foreground-color;
+      border-left: $width solid $background-color;
+      border-right: $width solid $background-color;
+    } @else if $direction == right {
+      border-bottom: $width solid $background-color;
+      border-left: $height solid $foreground-color;
+      border-top: $width solid $background-color;
+    } @else if $direction == down {
+      border-left: $width solid $background-color;
+      border-right: $width solid $background-color;
+      border-top: $height solid $foreground-color;
+    } @else if $direction == left {
+      border-bottom: $width solid $background-color;
+      border-right: $height solid $foreground-color;
+      border-top: $width solid $background-color;
+    }
+  } @else if ($direction == up-right) or ($direction == up-left) {
+    border-top: $height solid $foreground-color;
+
+    @if $direction == up-right {
+      border-left:  $width solid $background-color;
+    } @else if $direction == up-left {
+      border-right: $width solid $background-color;
+    }
+  } @else if ($direction == down-right) or ($direction == down-left) {
+    border-bottom: $height solid $foreground-color;
+
+    @if $direction == down-right {
+      border-left:  $width solid $background-color;
+    } @else if $direction == down-left {
+      border-right: $width solid $background-color;
+    }
+  } @else if ($direction == inset-up) {
+    border-color: $background-color $background-color $foreground-color;
+    border-style: solid;
+    border-width: $height $width;
+  } @else if ($direction == inset-down) {
+    border-color: $foreground-color $background-color $background-color;
+    border-style: solid;
+    border-width: $height $width;
+  } @else if ($direction == inset-right) {
+    border-color: $background-color $background-color $background-color $foreground-color;
+    border-style: solid;
+    border-width: $width $height;
+  } @else if ($direction == inset-left) {
+    border-color: $background-color $foreground-color $background-color $background-color;
+    border-style: solid;
+    border-width: $width $height;
+  }
+}
+
+$font-sizes: (
+   48,
+   36,
+   35,
+   34,
+   33,
+   32,
+   31,
+   30,
+   29,
+   28,
+   27,
+   26,
+   25,
+   24,
+   23,
+   22,
+   21,
+   20,
+   19,
+   18,
+   17,
+   16,
+   15,
+   14,
+   13,
+   12
+);
+
+
+@each $curSize in $font-sizes {
+
+  .#{fz}-#{$curSize} { font-size: unquote($curSize + 'px!important;') };
+}
+
+@mixin makeCol($size) {
+  flex: 0 0 $size;
+  max-width: $size;
+}

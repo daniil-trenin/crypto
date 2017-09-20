@@ -1,0 +1,24 @@
+%flag-icon-background {
+  background-size: contain;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+}
+
+.flag-icon {
+  @extend %flag-icon-background;
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  width: 32px;
+  height: 32px;
+
+
+}
+
+@mixin flag-icon($country) {
+
+  $bg: unquote('#{$flag-icon-css-path}#{$country}' + '.png');
+  background-image: inline($bg);
+
+  
+}

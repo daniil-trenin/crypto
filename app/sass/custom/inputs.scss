@@ -1,0 +1,32 @@
+//.form-control{
+//	font-size: $input-font-size;
+//}
+//
+//.form-control-sm{
+//	font-size: $input-font-size-sm;
+//}
+//
+//.form-control-lg{
+//	font-size: $input-font-size-lg;
+//}
+
+
+.input-with-icon{
+	position: relative;	
+	.form-icon{
+		position: absolute;
+		width: 40px;
+		left: 10px;
+		line-height: 1;
+		top: 50%;
+		transform:translateY(-50%);
+		color: #999;
+		font-size: 20px;
+		text-align: center;
+		pointer-events: none;
+	}
+	.form-control{
+		padding-left: 50px;
+		
+	}
+}

@@ -1,0 +1,189 @@
+// Bootstrap overrides
+//
+// Copy variables from `_variables.scss` to this file to override default values
+// without modifying source files.
+$theme-colors: (
+  primary: $blue,
+  secondary: $gray-600,
+  success: $green,
+  info: $cyan,
+  warning: $yellow,
+  danger: $red,
+  light: $gray-100,
+  dark: $gray-800
+) ;
+
+// Create grayscale
+$gray-100: #f8f9fa ;
+$gray-200: #e9ecef ;
+$gray-300: #dee2e6 ;
+$gray-400: #ced4da ;
+$gray-500: #adb5bd ;
+$gray-600: #868e96 ;
+$gray-700: #495057 ;
+$gray-800: #343a40 ;
+$gray-900: #212529 ;
+// Reassign color vars to semantic color scheme
+
+$p:theme-color("primary");
+$s:theme-color("success");
+$d:theme-color("danger");
+$i:theme-color("info");
+$w:theme-color("warning");
+
+
+
+$enable-rounded:            true ;
+$enable-shadows:            true ;
+$enable-gradients:          false ;
+$enable-transitions:        true ;
+$enable-hover-media-query:  false ;
+$enable-grid-classes:       true ;
+$enable-print-styles:       true ;
+
+$font-family-sans-serif: 'Roboto', sans-serif;
+$headings-font-family:   $font-family-sans-serif;
+$font-family-base:       $font-family-sans-serif;
+$headings-font-weight:   700;
+$headings-color:         #000f1f ;
+$headings-line-height:   1.15 ;
+
+$line-height-base: 1.4;
+
+$lead-font-size:   1.25rem;
+$lead-font-weight: 400;
+
+$font-size-base: 1rem; // Assumes the browser default, typically `16px`
+$font-size-lg:   1.25rem;
+$font-size-sm:   .875rem;
+
+
+$h1-font-size: 2.5rem ;
+$h2-font-size: 2rem ;
+$h3-font-size: 1.75rem ;
+$h4-font-size: 1.5rem ;
+
+
+$input-btn-padding-y:       .5rem ;
+$input-btn-padding-x:       .75rem ;
+$input-btn-line-height:     1.25 ;
+
+$input-btn-padding-y-sm:    .25rem ;
+$input-btn-padding-x-sm:    .5rem ;
+$input-btn-line-height-sm:  1.5 ;
+
+$input-btn-padding-y-lg:    .5rem ;
+$input-btn-padding-x-lg:    1rem ;
+$input-btn-line-height-lg:  1.5 ;
+
+
+$input-bg:                       $white ;
+$input-color:                    $gray-700 ;
+$input-border-color:             rgba($black,.15) ;
+$input-btn-border-width:         $border-width ; // For form controls and buttons
+$input-box-shadow:               inset 0 1px 1px rgba($black,.075) ;
+
+
+$input-focus-bg:                 $input-bg ;
+$input-focus-border-color:       lighten(theme-color("primary"), 25%) ;
+$input-focus-box-shadow:         $input-box-shadow, $btn-focus-box-shadow ;
+$input-focus-color:              $input-color ;
+
+$input-placeholder-color:        $gray-600 ;
+
+$table-cell-padding:            .4rem .1rem;
+
+$table-bg:                      #124272;
+
+
+$table-bg-accent:               #184f86;
+$table-bg-hover:                #487aa5;
+$table-bg-active:               $table-bg-hover;
+
+$tag-font-weight:           400 ;
+$tag-padding-y:             .35em ;
+
+
+$spacers: (
+  0: 0,
+  1: 5px,
+  2: 10px,
+  3: 15px,
+  4: 20px,
+  5: 25px,
+  6: 30px,
+  7: 35px,
+  8: 40px,
+  9: 45px,
+  10: 50px,
+  11: 55px,
+  12: 60px
+) ;
+
+$dropdown-min-width:             240Px ;
+$dropdown-padding-y:             12Px ;
+$dropdown-margin-top:            44Px ;
+$dropdown-bg:                    rgba(0,0,0,0.8);
+$dropdown-border-color:          $w;
+$dropdown-border-width:          2px;
+$dropdown-box-shadow:            none;
+
+
+
+
+
+
+$modal-lg:                    750Px ;
+$modal-md:                    700Px ;
+$modal-sm:                    574Px ;
+
+$modal-backdrop-opacity:      .9 ;
+$modal-backdrop-bg:           #000 ;
+
+
+
+
+
+$sm: 544px;
+$md: 768px;
+$lg: 992px;
+$xl: 1200px;
+
+
+$xs-max:              ($sm - 1);
+$sm-max:              ($md - 1);
+$md-max:              ($lg - 1);
+$lg-max:              ($xl - 1);
+
+$grid-breakpoints: (
+  xs: 0,
+  sm: 544px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px
+) ;
+
+$container-max-widths: (
+  sm: 576px,
+  md: 900px,
+  lg: 940px,
+  xl: 1170px
+) ;
+
+
+$close-font-size:             $font-size-base * 1.5 ;
+$close-font-weight:           400;
+$close-color:                 #000;
+$close-text-shadow:           none;
+
+$border-radius:          0.31rem ;
+$border-radius-lg:       0.31rem ;
+$border-radius-sm:       0.31rem ;
+
+// This variable affects the `.h-*` and `.w-*` classes.
+$sizes: (
+  25: 25%,
+  50: 50%,
+  75: 75%,
+  100: 100%
+) ;

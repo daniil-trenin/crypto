@@ -1,0 +1,11 @@
+@each $class, $countryName in $flag-icon-countries {
+  .flag-icon-#{$class} {
+  	@include flag-icon($countryName);
+  } 
+}
+.flag-icon-japan{
+	border: 1px solid #ccc;
+	height: 22px!important;
+	margin-top: 5px;
+	margin-bottom: 5px;
+}

@@ -1,0 +1,9 @@
+.modal{
+  @include ghost-center;
+  white-space: nowrap;
+  .modal-dialog{
+    border-radius: 0;
+    white-space: normal;
+    width: 100%;
+  }
+}

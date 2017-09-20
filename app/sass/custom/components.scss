@@ -1,0 +1,50 @@
+.animate-dots{
+	width: 25px;
+	margin-left: 3px;
+	text-align: left;
+	display: inline-block;
+	&:after{
+		content:"";
+		animation: changeLetter 1.5s linear infinite;
+		@keyframes changeLetter {
+		  0% {
+		    content: "";
+		  }
+		  33% {
+		    content: ".";
+		  }
+		  66% {
+		    content: "..";
+		  }
+		  99% {
+		    content: "...";
+		  }
+		}
+	}
+
+}
+.blinking-dot{
+  &:before{
+    content: "";
+    display: inline-block;
+    margin-right: 0.3em;
+    width: 0.5em;
+    height: 0.5em;
+    border-radius: 50%;
+    background-color: #25d611;
+    animation-duration: 0.5s;
+    animation-fill-mode: both;
+    animation-name: blink;
+    animation-iteration-count: infinite;
+  }
+  @keyframes blink {
+      0% {
+          opacity:1;
+      }
+
+      100% {
+          opacity:0;
+      }
+  }
+}
+

@@ -1,0 +1,26 @@
+
+@import "bootstrap/bootstrap";
+@import "custom/variables";
+@import "custom/common-mixins";
+@import "custom/base";
+@import "custom/components";
+@import "custom/buttons";
+@import "custom/inputs";
+@import "custom/popover";
+@import "custom/modals";
+@import "custom/carousel";
+@import "custom/validation";
+@import "custom/sections";
+
+
+html{
+@include mq(max 350px){font-size: 12px;};
+@include mq(max 470px){font-size: 12px;};
+@include mq(max 550px){font-size: 13px;};
+@include mq(max $xs-max){font-size: 14px;};
+@include mq(xs){font-size: 16px;};
+@include mq(sm){font-size: 18px;};
+@include mq(md){font-size: 30px;};
+@include mq(lg){font-size: 14px;};
+
+}
